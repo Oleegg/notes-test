@@ -1,0 +1,22 @@
+.edit {
+  position: absolute;
+  z-index: 10;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #00000065;
+}
+
+.edit__wrapper {
+  width: 80vw;
+  height: 40vh;
+  margin: auto;
+  border: 3px solid rebeccapurple;
+  background: #222222;
+  border-radius: 20px;
+  padding: 20px;
+}

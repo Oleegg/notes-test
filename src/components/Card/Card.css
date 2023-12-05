@@ -1,0 +1,31 @@
+.card,
+.card-edit {
+  padding: 10px;
+  margin: 5px;
+  border: 2px solid rebeccapurple;
+  border-radius: 10px;
+}
+
+.text {
+  white-space: nowrap; /* Текст не переносится */
+  overflow: hidden; /* Обрезаем всё за пределами блока */
+  text-overflow: ellipsis; /* Добавляем многоточие */
+}
+
+.teg {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card__btns {
+  display: none;
+  position: absolute;
+  right: 10px;
+  z-index: 1;
+}
+
+.card-edit .card__btns {
+  display: block;
+}
