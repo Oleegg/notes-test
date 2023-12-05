@@ -1,6 +1,7 @@
 {
   "name": "notes-test",
   "version": "0.1.0",
+  "homepage": "https://Oleegg.github.io/notes-test",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^2.0.0",
