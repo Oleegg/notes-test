@@ -1,0 +1,10 @@
+.tag-list__span,
+.tag-list__span-select {
+  padding: 5px;
+  cursor: pointer;
+}
+
+.tag-list__span-select {
+  border-radius: 10px;
+  background-color: rgb(135, 135, 135);
+}

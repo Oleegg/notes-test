@@ -50,14 +50,21 @@ const AddNote = ({ tag, setTag, setIsAddNote }: Props) => {
           e.nativeEvent.stopImmediatePropagation();
         }}
       >
-        <input
-          className=""
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-        />
+        <label className="label">
+          <input
+            autoFocus={true}
+            className="input"
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+          />
+        </label>
         <div className="edit__btns">
-          <button onClick={addHandler}>Add note</button>
-          <button onClick={cancelHandler}>Cancel</button>
+          <button className="btn edit__btn" onClick={addHandler}>
+            Add note
+          </button>
+          <button className="btn edit__btn" onClick={cancelHandler}>
+            Cancel
+          </button>
         </div>
       </div>
     </div>

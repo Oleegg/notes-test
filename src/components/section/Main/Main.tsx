@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useAppSelector } from "../../../store/store";
 import CardList from "../../CardList/CardList";
-import SelectTags from "../../SelectTags/SelectTags";
 import TagsList from "../../TagsList/TagsList";
 import AddNote from "../../AddNote/AddNote";
 import "./Main.css";
@@ -14,13 +13,15 @@ const Main = () => {
     <main className="main">
       <>
         <div className="main__filter">
-          <button onClick={() => setIsAddNote(true)}>Add a note</button>
+          <p></p>
+          <h2>Notes ist</h2>
+          <button className="btn main__btn" onClick={() => setIsAddNote(true)}>
+            Add a note
+          </button>
           {isAddNote ? (
             <AddNote tag={tag} setTag={setTag} setIsAddNote={setIsAddNote} />
           ) : null}
-          <SelectTags />
         </div>
-        <h2>Notes ist</h2>
       </>
       <div className="main__content">
         <CardList />

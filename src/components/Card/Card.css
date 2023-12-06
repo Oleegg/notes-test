@@ -26,6 +26,10 @@
   z-index: 1;
 }
 
+.card-btn {
+  padding: 5px 10px;
+}
+
 .card-edit .card__btns {
   display: block;
 }

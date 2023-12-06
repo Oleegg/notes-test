@@ -4,7 +4,13 @@
   padding: 10px;
 }
 
-.tag-list__span {
-  padding: 5px;
-  cursor: pointer;
+.tag-list h4 {
+  margin-bottom: 20px;
+}
+
+.tag-list p {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
 }

@@ -2,8 +2,9 @@
 import Card from "../Card/Card";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 import { useEffect, useState } from "react";
-import { State, addAll } from "../../store/noteSlice";
+import { addAll } from "../../store/noteSlice";
 import "./CardList.css";
+import { State } from "../../store/additionally";
 
 const CardList = () => {
   const state = useAppSelector((state) => state.app);

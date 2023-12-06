@@ -1,20 +1,6 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
+import { Note, checkTag, initialState } from './additionally'
 
-export type Note = {
-  id: number, text: string
-}
-
-export type State = {
-  notes: Note[];
-  tags: string[];
-  selectedTags: string[]
-}
-
-const initialState:State = {
-  notes: [],
-  tags: [],
-  selectedTags: []
-}
 
 export const AppSlice = createSlice({
   name: 'notes',
@@ -27,21 +13,26 @@ export const AppSlice = createSlice({
     },
     addNote:(state, action: PayloadAction<{text: string}>)=> {
       state.notes.push({
-        id: state.notes.length,
-        text: action.payload.text
+        id: Date.now(),
+        text: action.payload.text,
+        tag: checkTag(action.payload.text)
       })
     },
     deleteNote: (state, action:PayloadAction<{id: number}>)=>{
       state.notes=state.notes.filter(note=> note.id !== action.payload.id)
     },
-    editNote:(state, action:PayloadAction<{id: number,text: string}>)=>{
-      state.notes=state.notes.map(note=>note.id===action.payload.id? {...note, text: action.payload.text}: note)
+    editNote:(state, action:PayloadAction<{id: number, text: string, tag: string}>)=>{
+      state.notes=state.notes.map(note=>note.id===action.payload.id? {...note, text: action.payload.text,tag: action.payload.tag}: note)
     },
     addTeg:(state, action: PayloadAction<{tag: string}>)=>{
       const tag = action.payload.tag
       const tags = state.tags
       if(!tags.includes(tag)){tags.push(action.payload.tag)}
     },
+    deleteTag: (state, action:PayloadAction<{tag: string}>)=>{
+      state.tags=state.tags.filter(tag=> tag !== action.payload.tag)
+    },
+
     addSelectedTeg:(state, action: PayloadAction<{tag: string}>)=>{
       const tag = action.payload.tag
       const tags = state.selectedTags
@@ -54,4 +45,4 @@ export const AppSlice = createSlice({
 })
 
 export default AppSlice.reducer;
-export const {addAll, addNote, editNote, deleteNote, addTeg, addSelectedTeg, deleteSelectedTag } = AppSlice.actions
+export const {addAll, addNote, editNote, deleteNote, addTeg, deleteTag, addSelectedTeg, deleteSelectedTag } = AppSlice.actions

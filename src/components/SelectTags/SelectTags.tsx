@@ -12,7 +12,7 @@ const SelectTags = () => {
 
   return (
     <div className="select-tag">
-      selected:{" "}
+      selected:
       {selectTags.length ? (
         selectTags.map((tag) => (
           <span
