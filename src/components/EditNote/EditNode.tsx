@@ -1,6 +1,11 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/store";
-import { addTeg, deleteTag, editNote } from "../../store/noteSlice";
+import {
+  addTeg,
+  deleteSelectedTag,
+  deleteTag,
+  editNote,
+} from "../../store/noteSlice";
 import { Note, checkHaveLastTag, checkHaveTag } from "../../store/additionally";
 import "./EditNode.css";
 
@@ -17,13 +22,14 @@ const EditNode = ({
   const dispatch = useAppDispatch();
 
   const saveHandler = () => {
-    if (value) {
+    if (value && value !== note.text) {
       dispatch(editNote({ id: note.id, text: value, tag: tagValue }));
-      if (checkHaveLastTag(note.tag, state)) {
-        dispatch(deleteTag({ tag: note.tag }));
-      }
       if (!checkHaveTag(tagValue, state)) {
         dispatch(addTeg({ tag: tagValue }));
+      }
+      if (checkHaveLastTag(note.tag, state) && note.tag !== tagValue) {
+        dispatch(deleteTag({ tag: note.tag }));
+        dispatch(deleteSelectedTag({ tag: note.tag }));
       }
     } else {
       dispatch(editNote({ id: note.id, text: note.text, tag: note.tag }));
@@ -35,12 +41,16 @@ const EditNode = ({
 
   useEffect(() => {
     const tag = value.slice(value.indexOf("#"));
-    console.log(tag, "*****", note.tag);
-
     if (value.includes("#") && tag.length > 1 && tag !== note.tag) {
       setTagValue(value.slice(value.indexOf("#")));
     }
   }, [value, note.tag, dispatch, state]);
+
+  const onKeyDown = (e: React.KeyboardEvent<HTMLLabelElement>) => {
+    if (e.code === "Enter") {
+      saveHandler();
+    }
+  };
 
   return (
     <div
@@ -58,7 +68,7 @@ const EditNode = ({
           e.nativeEvent.stopImmediatePropagation();
         }}
       >
-        <label className=" label edit__label">
+        <label className=" label edit__label" onKeyDown={(e) => onKeyDown(e)}>
           <input
             className="input edit__input"
             autoFocus={true}

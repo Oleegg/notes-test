@@ -15,7 +15,7 @@ const Card = ({ note }: { note: Note }) => {
   const state = useAppSelector((state) => state.app);
   const dispatch = useAppDispatch();
 
-  const deleteHandler = () => {
+  const deleteNoteHandler = () => {
     if (checkHaveLastTag(note.tag, state)) {
       dispatch(deleteSelectedTag({ tag: note.tag }));
       dispatch(deleteTag({ tag: note.tag }));
@@ -37,7 +37,7 @@ const Card = ({ note }: { note: Note }) => {
             <button onClick={() => setIsEdit(true)} className="btn card-btn">
               Edit
             </button>
-            <button onClick={deleteHandler} className="btn card-btn">
+            <button onClick={deleteNoteHandler} className="btn card-btn">
               Delete
             </button>
           </div>
