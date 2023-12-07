@@ -32,7 +32,6 @@ export const AppSlice = createSlice({
     deleteTag: (state, action:PayloadAction<{tag: string}>)=>{
       state.tags=state.tags.filter(tag=> tag !== action.payload.tag)
     },
-
     addSelectedTeg:(state, action: PayloadAction<{tag: string}>)=>{
       const tag = action.payload.tag
       const tags = state.selectedTags

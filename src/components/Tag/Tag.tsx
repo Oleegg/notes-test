@@ -3,8 +3,10 @@ import { addSelectedTeg, deleteSelectedTag } from "../../store/noteSlice";
 import { useAppDispatch } from "../../store/store";
 import "./Tag.css";
 
-const Tag = ({ tag }: { tag: string }) => {
-  const [isSelected, setIsSelected] = useState(false);
+type Props = { tag: string; checked: boolean };
+
+const Tag = ({ tag, checked = false }: Props) => {
+  const [isSelected, setIsSelected] = useState(checked);
   const dispatch = useAppDispatch();
 
   const checkTagHandler = (tag: string) => {

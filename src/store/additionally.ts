@@ -16,22 +16,17 @@ export const checkHaveTag = (tag: string, state: State): boolean => {
   const texts = state.notes
     .map((note) => note.text)
     .map((text) => checkTag(text));
-  const isHave = texts.indexOf(tag)>0
-  console.log('--------------',isHave,'#',texts,'%',tag);
-  ;
-  return isHave;
+
+  return texts.indexOf(tag)>0
 };
 
 export const checkHaveLastTag = (tag: string, state: State): boolean => {
   const texts = state.notes
     .map((note) => note.text)
     .map((text) => checkTag(text));
-  const isHave = texts.indexOf(tag) === texts.lastIndexOf(tag);
-  return isHave;
+
+  return texts.indexOf(tag) === texts.lastIndexOf(tag);
 };
-
-
-
 
 export const initialState:State = {
   notes: [],

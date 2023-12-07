@@ -25,7 +25,7 @@ const Main = () => {
       </>
       <div className="main__content">
         <CardList />
-        <TagsList tag={tag} tagList={state.tags} />
+        <TagsList tag={tag} state={state} />
       </div>
     </main>
   );

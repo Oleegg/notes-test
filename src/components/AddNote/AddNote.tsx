@@ -34,6 +34,12 @@ const AddNote = ({ tag, setTag, setIsAddNote }: Props) => {
     cancelHandler();
   };
 
+  const onKeyDown = (e: React.KeyboardEvent<HTMLLabelElement>) => {
+    if (e.code === "Enter") {
+      addHandler();
+    }
+  };
+
   return (
     <div
       className="edit"
@@ -50,7 +56,7 @@ const AddNote = ({ tag, setTag, setIsAddNote }: Props) => {
           e.nativeEvent.stopImmediatePropagation();
         }}
       >
-        <label className="label">
+        <label className="label" onKeyDown={(e) => onKeyDown(e)}>
           <input
             autoFocus={true}
             className="input"
